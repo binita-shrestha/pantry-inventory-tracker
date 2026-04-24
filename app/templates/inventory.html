@@ -4,6 +4,50 @@
 
 {% block content %}
 <div class="card">
-    <h2>Inventory Page</h2>
+    <h2>Inventory</h2>
+
+    <div style="margin-bottom: 15px;">
+        <input type="text" placeholder="Search items..." style="padding: 8px; width: 250px;">
+    </div>
+
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Date Received</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rice</td>
+                <td>Dry Food</td>
+                <td>10</td>
+                <td>2026-04-01</td>
+                <td>2026-06-01</td>
+                <td>OK</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Canned Beans</td>
+                <td>Canned Food</td>
+                <td>3</td>
+                <td>2026-04-10</td>
+                <td>2026-05-15</td>
+                <td>Low Stock</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 {% endblock %}
