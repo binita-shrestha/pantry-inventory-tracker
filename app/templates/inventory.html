@@ -4,6 +4,46 @@
 
 {% block content %}
 <div class="card">
-    <h2>Inventory Page</h2>
+    <h2>Inventory</h2>
+
+    <div style="margin-bottom: 15px;">
+        <input type="text" placeholder="Search items..." style="padding: 8px; width: 250px;">
+    </div>
+
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Date Received</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.date_received }}</td>
+                <td>{{ item.expiration_date }}</td>
+                <td>
+                    {% if item.quantity < item.minimum_stock %}
+                        Low Stock
+                    {% else %}
+                        OK
+                    {% endif %}
+                </td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

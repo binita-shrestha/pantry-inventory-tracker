@@ -4,6 +4,47 @@
 
 {% block content %}
 <div class="card">
-    <h2>Add Item Page</h2>
+    <h2>Add New Item</h2>
+
+    <form method="post" action="/add">
+        <div class="form-group">
+            <label for="item_name">Item Name</label>
+            <input type="text" id="item_name" name="item_name" placeholder="Enter item name">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                <option value="">Select category</option>
+                <option value="Canned Food">Canned Food</option>
+                <option value="Dry Food">Dry Food</option>
+                <option value="Toiletries">Toiletries</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity">
+        </div>
+
+        <div class="form-group">
+            <label for="date_received">Date Received</label>
+            <input type="date" id="date_received" name="date_received">
+        </div>
+
+        <div class="form-group">
+            <label for="expiration_date">Expiration Date</label>
+            <input type="date" id="expiration_date" name="expiration_date">
+        </div>
+
+        <div class="form-group">
+            <label for="minimum_stock">Minimum Stock Level</label>
+            <input type="number" id="minimum_stock" name="minimum_stock" placeholder="Example: 6">
+        </div>
+
+        <button type="submit">Save Item</button>
+        <button type="reset">Reset</button>
+    </form>
 </div>
 {% endblock %}
