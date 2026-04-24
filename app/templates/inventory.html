@@ -23,30 +23,26 @@
             </tr>
         </thead>
         <tbody>
+            {% for item in items %}
             <tr>
-                <td>Rice</td>
-                <td>Dry Food</td>
-                <td>10</td>
-                <td>2026-04-01</td>
-                <td>2026-06-01</td>
-                <td>OK</td>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.date_received }}</td>
+                <td>{{ item.expiration_date }}</td>
+                <td>
+                    {% if item.quantity < item.minimum_stock %}
+                        Low Stock
+                    {% else %}
+                        OK
+                    {% endif %}
+                </td>
                 <td>
                     <button>Edit</button>
                     <button>Delete</button>
                 </td>
             </tr>
-            <tr>
-                <td>Canned Beans</td>
-                <td>Canned Food</td>
-                <td>3</td>
-                <td>2026-04-10</td>
-                <td>2026-05-15</td>
-                <td>Low Stock</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
