@@ -116,3 +116,20 @@ button:hover {
     color: #996600;
     font-weight: bold;
 }
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.dashboard-grid .card h3 {
+    margin-top: 0;
+    color: #1f3a5f;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
