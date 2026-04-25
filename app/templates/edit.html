@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Item{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Edit Item</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label>Item Name</label>
+            <input type="text" name="item_name" value="{{ item.item_name }}">
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" name="category" value="{{ item.category }}">
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" name="quantity" value="{{ item.quantity }}">
+        </div>
+
+        <div class="form-group">
+            <label>Date Received</label>
+            <input type="date" name="date_received" value="{{ item.date_received }}">
+        </div>
+
+        <div class="form-group">
+            <label>Expiration Date</label>
+            <input type="date" name="expiration_date" value="{{ item.expiration_date }}">
+        </div>
+
+        <div class="form-group">
+            <label>Minimum Stock</label>
+            <input type="number" name="minimum_stock" value="{{ item.minimum_stock }}">
+        </div>
+
+        <button type="submit">Update Item</button>
+    </form>
+</div>
+{% endblock %}

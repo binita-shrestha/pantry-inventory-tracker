@@ -85,5 +85,54 @@ def add():
 def alerts():
     return render_template("alerts.html")
 
+@app.route("/delete/<int:item_id>")
+def delete(item_id):
+    connection = get_db_connection()
+
+    connection.execute("DELETE FROM inventory WHERE id = ?", (item_id,))
+
+    connection.commit()
+    connection.close()
+
+    return redirect(url_for("inventory_page"))
+
+@app.route("/edit/<int:item_id>", methods=["GET", "POST"])
+def edit(item_id):
+    connection = get_db_connection()
+
+    item = connection.execute(
+        "SELECT * FROM inventory WHERE id = ?", (item_id,)
+    ).fetchone()
+
+    if request.method == "POST":
+        item_name = request.form["item_name"]
+        category = request.form["category"]
+        quantity = int(request.form["quantity"])
+        date_received = request.form["date_received"]
+        expiration_date = request.form["expiration_date"]
+        minimum_stock = int(request.form["minimum_stock"])
+
+        connection.execute("""
+            UPDATE inventory
+            SET item_name=?, category=?, quantity=?, date_received=?, expiration_date=?, minimum_stock=?
+            WHERE id=?
+        """, (
+            item_name,
+            category,
+            quantity,
+            date_received,
+            expiration_date,
+            minimum_stock,
+            item_id
+        ))
+
+        connection.commit()
+        connection.close()
+
+        return redirect(url_for("inventory_page"))
+
+    connection.close()
+    return render_template("edit.html", item=item)
+
 if __name__ == "__main__":
     app.run(debug=True)
