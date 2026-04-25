@@ -4,6 +4,94 @@
 
 {% block content %}
 <div class="card">
-    <h2>Alerts Page</h2>
+    <h2>Alerts</h2>
+
+    <h3>Low Stock Items</h3>
+    {% if low_stock_items %}
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Minimum Stock</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in low_stock_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.minimum_stock }}</td>
+                <td class="status-low">Low Stock</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No low-stock items at this time.</p>
+    {% endif %}
+
+    <br>
+
+    <h3>Expired Items</h3>
+    {% if expired_items %}
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in expired_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.expiration_date }}</td>
+                <td class="status-expired">Expired</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No expired items at this time.</p>
+    {% endif %}
+
+    <br>
+
+    <h3>Expiring Soon Items</h3>
+    {% if expiring_soon_items %}
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in expiring_soon_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.expiration_date }}</td>
+                <td class="status-soon">Expiring Soon</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No items expiring soon.</p>
+    {% endif %}
 </div>
 {% endblock %}
