@@ -83,7 +83,17 @@ def add():
 
 @app.route("/alerts")
 def alerts():
-    return render_template("alerts.html")
+    connection = get_db_connection()
+
+    low_stock_items = connection.execute("""
+        SELECT * FROM inventory
+        WHERE quantity < minimum_stock
+        ORDER BY quantity ASC
+    """).fetchall()
+
+    connection.close()
+
+    return render_template("alerts.html", low_stock_items=low_stock_items)
 
 @app.route("/delete/<int:item_id>")
 def delete(item_id):

@@ -4,6 +4,35 @@
 
 {% block content %}
 <div class="card">
-    <h2>Alerts Page</h2>
+    <h2>Alerts</h2>
+
+    <h3>Low Stock Items</h3>
+
+    {% if low_stock_items %}
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Minimum Stock</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in low_stock_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.minimum_stock }}</td>
+                <td>Low Stock</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No low-stock items at this time.</p>
+    {% endif %}
 </div>
 {% endblock %}
