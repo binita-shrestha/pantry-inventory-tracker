@@ -95,3 +95,24 @@ button:hover {
     margin-bottom: 15px;
     border-radius: 4px;
 }
+/* Alert section spacing */
+.card h3 {
+    margin-top: 25px;
+    color: #1f3a5f;
+}
+
+/* Status text styles */
+.status-low {
+    color: #b36b00;
+    font-weight: bold;
+}
+
+.status-expired {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.status-soon {
+    color: #996600;
+    font-weight: bold;
+}

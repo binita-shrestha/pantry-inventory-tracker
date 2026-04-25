@@ -81,19 +81,42 @@ def add():
 
     return render_template("add.html")
 
+from datetime import date, timedelta
+
 @app.route("/alerts")
 def alerts():
     connection = get_db_connection()
 
+    # low stock
     low_stock_items = connection.execute("""
         SELECT * FROM inventory
         WHERE quantity < minimum_stock
-        ORDER BY quantity ASC
     """).fetchall()
+
+    # expired items
+    today = date.today().isoformat()
+
+    expired_items = connection.execute("""
+        SELECT * FROM inventory
+        WHERE expiration_date < ?
+    """, (today,)).fetchall()
+
+    # expiring soon items (within 7 days)
+    future_date = (date.today() + timedelta(days=7)).isoformat()
+
+    expiring_soon_items = connection.execute("""
+        SELECT * FROM inventory
+        WHERE expiration_date BETWEEN ? AND ?
+    """, (today, future_date)).fetchall()
 
     connection.close()
 
-    return render_template("alerts.html", low_stock_items=low_stock_items)
+    return render_template(
+        "alerts.html",
+        low_stock_items=low_stock_items,
+        expired_items=expired_items,
+        expiring_soon_items=expiring_soon_items
+    )
 
 @app.route("/delete/<int:item_id>")
 def delete(item_id):
