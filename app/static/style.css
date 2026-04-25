@@ -87,3 +87,11 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+.error-box {
+    background-color: #ffe5e5;
+    border: 1px solid #cc0000;
+    color: #990000;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
