@@ -24,21 +24,37 @@ Frontend: HTML, CSS
 Backend: Python (Flask)
 Database: SQLite
 Version Control: Git & GitHub
+
 📂 Project Structure
+
 pantry-inventory-tracker/
+
 │
+
 ├── app/
+
 │   ├── templates/
+
 │   ├── static/
+
 │
+
 ├── database/
+
 │   └── pantry.db (auto-generated)
+
 │
+
 ├── app.py
+
 ├── database_setup.py
+
 ├── requirements.txt
+
 ├── README.md
+
 └── .gitignore
+
 ⚙️ Setup Instructions
 1. Clone the repository
 git clone https://github.com/binita-shrestha/pantry-inventory-tracker.git
